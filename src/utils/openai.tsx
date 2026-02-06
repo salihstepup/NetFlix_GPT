@@ -19,11 +19,13 @@
 // export default client;
 
 import OpenAI from "openai";
+import { OPENAI_KEY } from "./constant";
 
 console.log("ALL ENV:", import.meta.env);
 
 const client = new OpenAI({
-  apiKey: import.meta.env.VITE_OPENAI_KEY || "",
+  //apiKey: import.meta.env.VITE_OPENAI_KEY || "", //From .env file  by doing this it can direct access from env no need of import and also u can use below code  from constant file, you can choose either way to set the API key, just make sure to set the VITE_OPENAI_KEY environment variable with your actual OpenAI API key in your .env file for this to work properly, and also ensure that you have proper security measures in place to protect your API keys when using them in a frontend application.
+  apiKey: OPENAI_KEY || "", // You can also directly pass the API key here, make sure to set the VITE_OPENAI_KEY environment variable with your actual OpenAI API key in your .env file for this to work properly, and also ensure that you have proper security measures in place to protect your API keys when using them in a frontend application.
   dangerouslyAllowBrowser: true,
 });
 
