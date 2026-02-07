@@ -88,7 +88,7 @@ const Login = () => {
                   email: email,
                   displayName: displayName,
                   photoURL: photoURL,
-                })
+                }),
               );
 
               // dispatch(
@@ -174,16 +174,21 @@ const Login = () => {
   return (
     <div>
       <Header />
-
+      {/* inset-0 Same as: top: 0; right: 0; bottom: 0; left: 0; Makes div full
+      screen. w-full h-full Makes image fill container. object-cover Maintains
+      aspect ratio and covers screen. -z-10 Pushes background behind form. */}
       {/* Background Image */}
-      <div className="absolute">
-        <img src={BG_URL} alt="Netflix Background" />
+      <div className="absolute inset-0 -z-10">
+        <img //w-full h-full object-cover to make the image cover the entire area without distortion, and absolute with inset-0 to position it as a background
+          className="w-full h-full object-cover"
+          src={BG_URL}
+          alt="Netflix Background"
+        />
       </div>
-
       {/* Login / Signup Form */}
       <form
         onSubmit={handleSubmit}
-        className="w-3/12 absolute p-12 bg-black/70 backdrop-blur-sm my-36 mx-auto right-0 left-0 text-white rounded-lg shadow-xl"
+        className="w-full md:w-3/12 absolute p-12 bg-black/70 backdrop-blur-sm my-36 mx-auto right-0 left-0 text-white rounded-lg shadow-xl"
       >
         {/* Form Title */}
         <h1 className="font-bold text-xl p-4">
@@ -250,8 +255,8 @@ const Login = () => {
               ? "Signing In..."
               : "Signing Up..."
             : isSignInForm
-            ? "Sign In"
-            : "Sign Up"}
+              ? "Sign In"
+              : "Sign Up"}
         </button>
 
         <p

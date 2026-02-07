@@ -55,7 +55,7 @@ const Header = () => {
             email: email,
             displayName: displayName,
             photoURL: photoURL,
-          })
+          }),
         ); // Dispatch action to add user to Redux store
         //all this details add cheyyunnu redux store il vennel extrayum cheyyam
         navigate("/browse"); //ivde navigate work avum ith headerl ayond also aa issue povum, eth issue vecha munne direct navigate cheyyan pattumayrnnu, login avathe browse page cheyyan  pattula sign in ayal pattum also direct logoutum pattula
@@ -82,16 +82,16 @@ const Header = () => {
     dispatch(changeLanguage(e.target.value));
   };
   return (
-    <div className="absolute w-screen px-8 py-4 bg-gradient-to-b from-black z-10 flex justify-between items-center">
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between items-center ">
       <img
         //absolute top-4 left-4 h-12 , ith use chynne oru imagente molil beran aan or overlap avaan an
         // src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
         src={LOGO}
         alt="Netflix Logo"
-        className="w-36 ml-4 mt-4"
+        className="w-36 mx-auto md:mx-0"
       />
       {user && ( //if user is logged in than only show signout button and user photo etc..
-        <div className="flex p-2 space-x-4 ">
+        <div className="flex p-2 space-x-4 justify-between items-center">
           {/* <select className="text-white px-2 ">
             <option value="en">English</option>
             <option value="hindi">Hindi</option>
@@ -108,12 +108,12 @@ const Header = () => {
             >
               {SUPPORTED_LANGUAGES.map(
                 (
-                  lang //map through the supported languages array, using key becoz of map
+                  lang, //map through the supported languages array, using key becoz of map
                 ) => (
                   <option key={lang.identifier} value={lang.identifier}>
                     {lang.name}
                   </option>
-                )
+                ),
               )}
             </select>
           )}
@@ -126,7 +126,7 @@ const Header = () => {
             {/* //button text based on state */}
           </button>
           <img
-            className=" w-12 h-12"
+            className="hidden md:block w-12 h-12" //hidden in mobile view and show in desktop view, w-12 h-12 to make it 48px by 48px
             alt="usericon"
             src={USER_AVATAR} //photoURL coming from redux athine useselctor vech edth ivde display chyth
           />

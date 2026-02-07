@@ -38,13 +38,19 @@ const GPTSearchPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <>
       <div className="fixed -z-10 w-full h-full">
-        <img src={BG_URL} alt="Netflix Background" />
+        <img
+          className="w-full h-full object-cover" //ith for mobile view for desktop view md: use chyth maatuka
+          src={BG_URL}
+          alt="Netflix Background"
+        />
       </div>
-      <GptSearchBar />
-      <GptMovieSuggestions />
-    </div>
+      <div className="pt-[30%] md:p-0">
+        <GptSearchBar />
+        <GptMovieSuggestions />
+      </div>
+    </>
   );
 };
 

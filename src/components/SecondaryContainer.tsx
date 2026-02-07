@@ -27,7 +27,7 @@ const SecondaryContainer = () => {
   return (
     nowPlaying && ( //check if nowPlaying is not null u can use this condition or the above one
       <div className="bg-black">
-        <div className="-mt-52 pl-12 relative z-20">
+        <div className="mt-0 md:-mt-52 pl-5 md:pl-12 relative z-20">
           <MovieList title={"Now Playing"} movies={nowPlaying} />
           <MovieList title={"Trending Movies"} movies={nowPlaying} />
           <MovieList title={"Popular Movies"} movies={popularMovies} />

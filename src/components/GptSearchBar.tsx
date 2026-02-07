@@ -25,7 +25,7 @@ const GptSearchBar = () => {
       "https://api.themoviedb.org/3/search/movie?query=" +
         movieName +
         "&include_adult=false&language=en-US&page=1",
-      API_OPTIONS
+      API_OPTIONS,
     );
     // .then(res => res.json()), it is async await so we can directly await the response and then return the data no need of .then() here, you can also handle errors using try catch block to catch any errors that may occur during the API call and log them or show an alert to the user
     // .then(res => console.log(res))
@@ -76,7 +76,7 @@ const GptSearchBar = () => {
     //for each movie i will search TMDP API to get the movie details like poster, overview etc and then display it in the UI, you can use axios or fetch to make API calls to TMDB API, you can create a function to search for movie details by name and then call that function for each movie in the recommendedMovies array
 
     const movieDetailsPromises = gptMovies?.map((movieName: string) =>
-      searchMovieTMDB(movieName.trim())
+      searchMovieTMDB(movieName.trim()),
     ); //here passing the trimmed movie name to the searchMovieTMDB function to get the movie details from TMDB API, this will return an array of promises as we are making multiple API calls to TMDB API for each movie in the recommendedMovies array, so we need to wait for all the promises to resolve using Promise.all to get the movie details for all the recommended movies before displaying them in the UI
     //here we get output as array of promises so we need to wait for all the promises to resolve using Promise.all
     //out put like => ["Promise {<pending>}", "Promise {<pending>}", "Promise {<pending>}", "Promise {<pending>}", "Promise {<pending>}"] so we need to wait for all the promises to resolve using Promise.all
@@ -93,7 +93,7 @@ const GptSearchBar = () => {
     // dispatch(addGptMovies(movieDetails)); //dispatch the action to add the recommended movies to the Redux store, you can then take this data from the Redux store to display in the UI, here we are just dispatching the action for demonstration
     //or if we show multiple data using {}
     dispatch(
-      addGptMovies({ movieNames: gptMovies, movieResults: movieDetails }) //here we are dispatching an object with both the movie names and movie details to the Redux store, you can then take this data from the Redux store to display in the UI, here we are just dispatching the action for demonstration
+      addGptMovies({ movieNames: gptMovies, movieResults: movieDetails }), //here we are dispatching an object with both the movie names and movie details to the Redux store, you can then take this data from the Redux store to display in the UI, here we are just dispatching the action for demonstration
     );
     //here get result as array of arrays like => [[{title: "Durandar", poster: "url", overview: "movie overview", release_date: "2020-01-01", etc}], [{title: "Avatar", poster: "url", overview: "movie overview", release_date: "2020-01-01", etc}], [{title: "Dhoom", poster: "url", overview: "movie overview", release_date: "2020-01-01", etc}], [{title: "Don", poster: "url", overview: "movie overview", release_date: "2020-01-01", etc}], [{title: "Dhrishyam", poster: "url", overview: "movie overview", release_date: "2020-01-01", etc}]] so we can flatten this array to get a single array of movie details for all the recommended movies before storing it in the Redux store or displaying it in the UI, you can use flat() method to flatten the array like movieDetails.flat() to get a single array of movie details for all the recommended movies, here we are just logging the movie details for demonstration
   };
@@ -121,9 +121,9 @@ const GptSearchBar = () => {
   //   };
 
   return (
-    <div className="pt-[10%] flex justify-center">
+    <div className=" pt-[35%] md:pt-[10%] flex justify-center">
       <form
-        className="w-1/2 bg-black grid grid-cols-12"
+        className="w-full md:w-1/2 bg-black grid grid-cols-12"
         onSubmit={(e) => e.preventDefault()} //prevent page reload on form submit,it will prevent the refreshing of the page
       >
         <input
